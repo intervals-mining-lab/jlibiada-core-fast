@@ -30,8 +30,6 @@
     <file url="file://$PROJECT_DIR$/src/libiada/Root/IBin.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/libiada/Root/SimpleTypes/ValueChar.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/libiada/Root/SimpleTypes/ValueInt.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/libiada/Statistics/DictionaryEntryBase.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/libiada/Statistics/FrequencyList.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/libiada/TheoryOfSet/Alphabet.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/test/EventTheory/testDimensionTest.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/test/EventTheory/testEventTest.java" charset="windows-1252" />
