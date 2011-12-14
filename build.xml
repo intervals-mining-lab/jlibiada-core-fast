@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jlibiada-core-fast" default="dist">
+<project name="jlibiada-core-fast" default="test">
     <description>
         Ant compile file
     </description>
@@ -8,6 +8,9 @@
     <property name="build" location="build"/>
     <property name="dist"  location="dist"/>
     <property name="lib" location="lib" />
+    <property name="tst" location="${src}/test" />
+    <property name="tst.TALK" value="true" />
+    <property name="reports" value="reports" />
 
     <path id="libraries">
         <fileset dir="${lib}">
@@ -16,11 +19,18 @@
     </path>
 
 
+    <path id="classpath.base"></path>
+    <path id="classpath.test">
+        <pathelement location="${lib}/junit-3.8.1.jar" />
+        <pathelement location="${tst}" />
+        <path refid="classpath.base" />
+    </path>
+
+
     <target name="init">
-        <!-- Create the time stamp -->
-        <tstamp/>
         <!-- Create the build directory structure used by compile -->
         <mkdir dir="${build}"/>
+        <mkdir dir="${reports}"/>
     </target>
 
     <target name="compile" depends="init" description="compile the source " >
@@ -35,9 +45,33 @@
         <jar jarfile="${dist}/lib/jlibiada-core-fast.jar" basedir="${build}"/>
     </target>
 
+
+    <target name="compile-test" depends="dist">
+        <javac srcdir="${tst}" verbose="${tst.TALK}" includes="${lib}">
+            <classpath refid="classpath.test"/>
+        </javac>
+    </target>
+
+    <target name="clean-compile-test">
+        <delete verbose="${tst.TALK}">
+            <fileset dir="${tst}" includes="**/*.class" />
+        </delete>
+    </target>
+
+    <target name="test" depends="compile-test">
+        <junit>
+            <classpath refid="classpath.test" />
+            <formatter type="brief" usefile="false" />
+            <test name="testChainTest" outfile="${reports}/result">
+                <formatter type="xml"/>
+            </test>
+        </junit>
+    </target>
+
     <target name="clean" description="clean up" >
         <!-- Delete the ${build} and ${dist} directory trees -->
         <delete dir="${build}"/>
         <delete dir="${dist}"/>
+        <delete dir="${reports}"/>
     </target>
 </project>
