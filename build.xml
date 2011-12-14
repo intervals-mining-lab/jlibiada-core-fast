@@ -62,7 +62,7 @@
         <junit>
             <classpath refid="classpath.test" />
             <formatter type="brief" usefile="false" />
-            <batchtest>
+            <batchtest todir="${reports}">
                 <fileset dir="${tst}" includes="**/*.java"/>
                 <formatter type="xml"/>
             </batchtest>
