@@ -3,7 +3,6 @@ package test.FastChainAlgoritms.FastChain.Calculators;
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
-import libiada.Statistics.Picks.CalculatorFactory;
 import org.junit.Test;
 
 /**
