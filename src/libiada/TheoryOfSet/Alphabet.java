@@ -1,6 +1,5 @@
 package libiada.TheoryOfSet;
 
-import libiada.EventTheory.PsevdoValue;
 import libiada.Root.IBaseObject;
 
 import java.util.ArrayList;
