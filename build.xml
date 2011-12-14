@@ -62,9 +62,10 @@
         <junit>
             <classpath refid="classpath.test" />
             <formatter type="brief" usefile="false" />
-            <test name="testChainTest" outfile="${reports}/result">
+            <batchtest>
+                <fileset dir="${tst}" includes="**/*.java"/>
                 <formatter type="xml"/>
-            </test>
+            </batchtest>
         </junit>
     </target>
 
