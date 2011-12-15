@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jlibiada-core-fast" default="test">
+<project name="jlibiada-core-fast" default="compile-test">
     <description>
         Ant compile file
     </description>
     <!-- set global properties for this build -->
     <property name="src" location="src"/>
+    <property name="src.main" location="${src}/main"/>
+    <property name="src.tests" location="${src}/test"/>
+
     <property name="build" location="build"/>
+    <property name="build.main" location="${build}/main"/>
+    <property name="build.tests" location="${build}/test"/>
+
     <property name="dist"  location="dist"/>
     <property name="lib" location="lib" />
-    <property name="tst" location="${src}/test" />
     <property name="tst.TALK" value="true" />
     <property name="reports" value="reports" />
 
@@ -21,21 +26,28 @@
 
     <path id="classpath.base"></path>
     <path id="classpath.test">
-        <pathelement location="${lib}/junit-3.8.1.jar" />
-        <pathelement location="${tst}" />
+        <fileset dir="${lib}" includes="*.jar"/>
+	<fileset dir="${build.main}">
+           <include name="**/*.class"/>
+	</fileset>
         <path refid="classpath.base" />
     </path>
 
 
     <target name="init">
         <!-- Create the build directory structure used by compile -->
+        <antcall target="clean"/>
         <mkdir dir="${build}"/>
+        <mkdir dir="${build.main}"/>
+        <mkdir dir="${build.tests}"/>
         <mkdir dir="${reports}"/>
     </target>
 
-    <target name="compile" depends="init" description="compile the source " >
+    <target name="compile" depends="init" description="compile the source">        
         <!-- Compile the java code from ${src} into ${build} -->
-        <javac srcdir="${src}" destdir="${build}" includes="${lib}"/>
+        <javac destdir="${build.main}" includeantruntime="false">
+		<src path="${src.main}"/>
+        </javac>
     </target>
 
     <target name="dist" depends="compile" description="generate the distribution" >
@@ -46,9 +58,10 @@
     </target>
 
 
-    <target name="compile-test" depends="dist">
-        <javac srcdir="${tst}" verbose="${tst.TALK}" includes="${lib}">
-            <classpath refid="classpath.test"/>
+    <target name="compile-test" depends="compile">
+        <javac destdir="${build.tests}" includes="${lib}/**/*.jar" includeantruntime="true">
+                <src path="${src}"/>
+		<classpath refid="classpath.test"/>
         </javac>
     </target>
 
