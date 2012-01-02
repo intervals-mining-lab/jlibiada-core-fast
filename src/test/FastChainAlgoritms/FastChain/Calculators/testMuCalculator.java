@@ -3,7 +3,6 @@ package test.FastChainAlgoritms.FastChain.Calculators;
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
-import org.junit.Test;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +11,6 @@ import org.junit.Test;
  * Time: 3:09
  */
 public class testMuCalculator extends TestCase {
-    @Test
     public void testMuValue() throws Exception {
         FastChain ch = new FastChain("121211");
         double mu = FastCalculatorFactory.getMu().getValue(ch.getFastUniformChain("1"), null);

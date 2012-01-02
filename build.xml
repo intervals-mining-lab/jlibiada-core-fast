@@ -1,91 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jlibiada-core-fast" default="compile-test">
-    <description>
-        Ant compile file
-    </description>
-    <!-- set global properties for this build -->
-    <property name="src" location="src"/>
-    <property name="src.main" location="${src}/main"/>
-    <property name="src.tests" location="${src}/test"/>
+<project name="jlibiada-core-fast" default="test-basic">
+    <property name="source" value="src"/>
+    <property name="source.main" value="${source}/main"/>
+    <property name="source.test" value="${source}/test"/>
 
-    <property name="build" location="build"/>
-    <property name="build.main" location="${build}/main"/>
-    <property name="build.tests" location="${build}/test"/>
+    <property name="build" value="build"/>
+    <property name="build.main" value="${build}/main"/>
+    <property name="build.test" value="${build}/test"/>
 
-    <property name="dist"  location="dist"/>
-    <property name="lib" location="lib" />
-    <property name="tst.TALK" value="true" />
-    <property name="reports" value="reports" />
+    <property name="reports" value="reports"/>
+    <property name="reports.test.xml" value="${reports}/test/xml/"/>
 
-    <path id="libraries">
-        <fileset dir="${lib}">
+    <property name="dist" value="dist"/>
+
+
+    <path id="test.compile.classpath">
+        <fileset dir="lib">
             <include name="*.jar"/>
         </fileset>
+        <pathelement location="${build.main}"/>
     </path>
 
-
-    <path id="classpath.base"></path>
-    <path id="classpath.test">
-        <fileset dir="${lib}" includes="*.jar"/>
-	<fileset dir="${build.main}">
-           <include name="**/*.class"/>
-	</fileset>
-        <path refid="classpath.base" />
+    <path id="test.classpath">
+        <path refid="test.compile.classpath"/>
+        <pathelement location="${build.test}"/>
     </path>
 
-
-    <target name="init">
-        <!-- Create the build directory structure used by compile -->
-        <antcall target="clean"/>
-        <mkdir dir="${build}"/>
+    <target name="init" depends="clean">
+        <mkdir dir="${dist}"/>
         <mkdir dir="${build.main}"/>
-        <mkdir dir="${build.tests}"/>
-        <mkdir dir="${reports}"/>
+        <mkdir dir="${build.test}"/>
+
+        <mkdir dir="${reports.test.xml}"/>
     </target>
 
-    <target name="compile" depends="init" description="compile the source">        
-        <!-- Compile the java code from ${src} into ${build} -->
-        <javac destdir="${build.main}" includeantruntime="false">
-		<src path="${src.main}"/>
+    <target name="compile" depends="init">
+        <javac srcdir="${source.main}"
+               destdir="${build.main}"
+               includeantruntime="false"
+               debug="true"/>
+    </target>
+
+    <target name="archive" depends="compile">
+        <jar basedir="${build.main}" destfile="${dist}/jlibiada-core-fast.jar"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${dist}"/>
+        <delete dir="${build}"/>
+        <delete dir="${reports}"/>
+    </target>
+
+    <target name="test-compile" depends="compile">
+        <javac destdir="${build.test}"
+               debug="true"
+               includeantruntime="false"
+               srcdir="${source.test}">
+            <classpath refid="test.compile.classpath"/>
         </javac>
     </target>
 
-    <target name="dist" depends="compile" description="generate the distribution" >
-        <!-- Create the distribution directory -->
-        <mkdir dir="${dist}/lib"/>
-         <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-        <jar jarfile="${dist}/lib/jlibiada-core-fast.jar" basedir="${build}"/>
-    </target>
-
-
-    <target name="compile-test" depends="compile">
-        <javac destdir="${build.tests}" includes="${lib}/**/*.jar" includeantruntime="true">
-                <src path="${src}"/>
-		<classpath refid="classpath.test"/>
-        </javac>
-    </target>
-
-    <target name="clean-compile-test">
-        <delete verbose="${tst.TALK}">
-            <fileset dir="${tst}" includes="**/*.class" />
-        </delete>
-    </target>
-
-    <target name="test" depends="compile-test">
-        <junit>
-            <classpath refid="classpath.test" />
-            <formatter type="brief" usefile="false" />
-            <batchtest todir="${reports}">
-                <fileset dir="${tst}" includes="**/*.java"/>
-                <formatter type="xml"/>
+    <target name="test-basic" depends="test-compile">
+        <junit printsummary="false" haltonfailure="false">
+            <classpath refid="test.classpath"/>
+            <formatter type="xml"/>
+            <!--<test todir="${reports.test.xml}" name="test.FastChainAlgoritms.FastChain.Calculators.testMuCalculator"/>-->
+            <batchtest todir="${reports.test.xml}">
+                <fileset dir="${build.test}" includes="**/*.class"/>
             </batchtest>
         </junit>
-    </target>
-
-    <target name="clean" description="clean up" >
-        <!-- Delete the ${build} and ${dist} directory trees -->
-        <delete dir="${build}"/>
-        <delete dir="${dist}"/>
-        <delete dir="${reports}"/>
     </target>
 </project>

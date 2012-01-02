@@ -1,10 +1,8 @@
 package test.FastChainAlgoritms.FastChain;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
 import libiada.FastChainAlgorithms.FastChain.FastUniformChain;
-import org.junit.Test;
 
 import java.util.ArrayList;
 
@@ -15,7 +13,6 @@ import java.util.ArrayList;
  * Time: 0:40
  */
 public class testFastUniformChain extends TestCase {
-    @Test
     public void testGetPositions() throws Exception {
         FastChain ch = new FastChain("12112141");
         FastUniformChain uChain = ch.getFastUniformChain("1");

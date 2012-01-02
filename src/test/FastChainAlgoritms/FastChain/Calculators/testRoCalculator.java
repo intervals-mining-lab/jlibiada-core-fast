@@ -3,7 +3,6 @@ package test.FastChainAlgoritms.FastChain.Calculators;
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
-import org.junit.Test;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +11,6 @@ import org.junit.Test;
  * Time: 0:55
  */
 public class testRoCalculator extends TestCase {
-    @Test
     public void testUniformChainCharacteristic() throws Exception {
         FastChain ch = new FastChain("121211");
         double ro = FastCalculatorFactory.getRo().getValue(ch.getFastUniformChain("1"), null);
