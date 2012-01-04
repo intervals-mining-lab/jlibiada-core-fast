@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jlibiada-core-fast" default="checkstyle-run">
+    <property name="build.dir" value="build"/>
+
+    <!--<typedef resource="checkstyletask.properties"-->
+                 <!--classpath="${ant.home}/lib/checkstyle-5.5-all.jar"/>-->
+
+    <target name="checkstyle-init">
+        <typedef resource="checkstyletask.properties"
+                 uri="antlib:com.puppycrawl.checkstyle"
+                 onerror="failall"/>
+        <property name="xml.dir" location="../xml"/>
+        <property name="checkstyle.policy"
+                  location="checkstyle-policy.xml"/>
+        <property name="checkstyle.xsl"
+                  location="${xml.dir}/checkstyle-frames.xsl"/>
+        <property name="build.checkstyle.dir"
+                  location="${build.dir}/checkstyle" />
+        <mkdir dir="reports/checkstyle" />
+        <property name="checkstyle.report.xml"
+                  location="reports/checkstyle/checkstyle.xml" />
+        <property name="checkstyle.report.html"
+                  location="${build.checkstyle.dir}/checkstyle.html" />
+    </target>
+
+
+    <target name="checkstyle-run" depends="checkstyle-init"
+            xmlns:cs="antlib:com.puppycrawl.checkstyle">
+        <cs:checkstyle
+                failOnViolation="false"
+                failureProperty="checkstyle.failed"
+                config="${checkstyle.policy}">
+                <!--classpathref="test.compile.classpath">-->
+            <formatter type="plain"/>
+            <formatter type="xml"
+                       toFile="${checkstyle.report.xml}"/>
+            <fileset dir="src" includes="**/*.java"/>
+        </cs:checkstyle>
+    </target>
+</project>
