@@ -16,7 +16,7 @@
     <property name="checkstyle.report.xml" location="${reports}/checkstyle.xml" />
     <property name="coverage.report.xml" location="${reports}/coverage.xml" />
 
-    <property name="cobertura.dir" value="/usr/share/java"/>
+    <property name="cobertura.dir" value="/usr/share/java/cobertura"/>
 
     <target name="checkstyle-init">
         <path id="checkstyle.lib" >
@@ -38,7 +38,7 @@
 
     <path id="cobertura.classpath">
         <fileset dir="${cobertura.dir}">
-            <include name="cobertura.jar" />
+            <!--<include name="cobertura.jar" />-->
             <include name="**/*.jar" />
         </fileset>
     </path>
@@ -72,7 +72,7 @@
     <target name="cover-run" depends="cover-instrumentation">
         <mkdir dir="${reports}/coverage/tests" />
         <junit showoutput="true" printsummary="true" fork="yes">
-            <!--<jvmarg value="-XX:-UseSplitVerifier"/>-->
+            <jvmarg value="-XX:-UseSplitVerifier"/>
             <sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser"/>
 
             <classpath location="${build.instr}" />
