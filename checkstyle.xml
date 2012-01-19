@@ -39,7 +39,7 @@
     <path id="cobertura.classpath">
         <fileset dir="${cobertura.dir}">
             <include name="cobertura.jar" />
-            <include name="lib/**/*.jar" />
+            <include name="**/*.jar" />
         </fileset>
     </path>
     <target name="cover-init">
