@@ -72,7 +72,7 @@
     <target name="cover-run" depends="cover-instrumentation">
         <mkdir dir="${reports}/coverage/tests" />
         <junit showoutput="true" printsummary="true" fork="yes">
-            <jvmarg value="-XX:-UseSplitVerifier"/>
+            <!--<jvmarg value="-XX:-UseSplitVerifier"/>-->
             <sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser"/>
 
             <classpath location="${build.instr}" />
