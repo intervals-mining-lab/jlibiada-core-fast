@@ -22,7 +22,6 @@ public class FrequencyList extends Alphabet implements IBaseObject {
         return new DictionaryEntryBase(((IBaseObject) vault.get(index)).Clone(), new ValueInt(pFrequency.get(index)));
     }
 
-    @Override
     public IBaseObject Clone() {
         FrequencyList frecList = new FrequencyList();
         frecList.pFrequency = (ArrayList<Long>) this.pFrequency.clone();

@@ -3,7 +3,8 @@ package libiada.FastChainAlgorithms.FastChain.Calculators;
 import libiada.FastChainAlgorithms.FastChain.FastAlphabet;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
 import libiada.FastChainAlgorithms.FastChain.FastUniformChain;
-import libiada.FastChainAlgorithms.FastChain.UtilClasses.ChainAlgebra.FastChainAlgebra;
+import libiada.FastChainAlgorithms.FastChain.UtilClasses.
+        ChainAlgebra.FastChainAlgebra;
 import libiada.IntervalAnalysis.LinkUp;
 
 /**
@@ -24,10 +25,14 @@ public class BinaryFastAverageGeometryInterval extends FastCalculatorBase {
     @Override
     public double getValue(FastChain chain, LinkUp linkUp) throws Exception {
         FastAlphabet alphabet = chain.getAlphabet();
-        FastUniformChain fastUniformChain1 = chain.getFastUniformChain(alphabet.indexOf(sym1));
-        FastUniformChain fastUniformChain2 = chain.getFastUniformChain(alphabet.indexOf(sym2));
-        FastUniformChain binaryChain = FastChainAlgebra.composition(fastUniformChain1, fastUniformChain2);
-        return FastCalculatorFactory.getGeometryInterval().getValue(binaryChain, linkUp);
+        FastUniformChain fastUniformChain1 =
+                chain.getFastUniformChain(alphabet.indexOf(sym1));
+        FastUniformChain fastUniformChain2 =
+                chain.getFastUniformChain(alphabet.indexOf(sym2));
+        FastUniformChain binaryChain =
+                FastChainAlgebra.composition(fastUniformChain1, fastUniformChain2);
+        FastCalculatorBase calculator = FastCalculatorFactory.getGeometryInterval();
+        return calculator.getValue(binaryChain, linkUp);
     }
 
     @Override

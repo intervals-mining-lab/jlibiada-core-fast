@@ -31,11 +31,12 @@ public abstract class FastChainBase {
         }
     }
 
+
     @Override
     public String toString() {
+        String result = "";
         if (events.size() == 0)
             return "";
-        String result = "";
         for (int i = 0; i < events.size()-1; i++) {
             result += alphabet.get(events.get(i)) + ", ";
         }
