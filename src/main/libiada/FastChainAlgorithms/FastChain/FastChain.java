@@ -52,21 +52,16 @@ public class FastChain extends FastIntervalsChain {
         IntervalsAlgebra iaCom = new IntervalsAlgebra();
         IntervalsAlgebra iaCir = new IntervalsAlgebra();
 
-        IntervalsAlgebra iaComPoses = new IntervalsAlgebra();
-        IntervalsAlgebra iaSPoses = new IntervalsAlgebra();
-        IntervalsAlgebra iaEPoses = new IntervalsAlgebra();
-        IntervalsAlgebra iaCirPoses = new IntervalsAlgebra();
+        pStartIntervals.clear();
+        pEndIntervals.clear();
+        pCommonIntervals.clear();
+        pCircleIntervals.clear();
 
         for (int i = 0; i < alphabet.size(); i++) {
             pStartIntervals = iaS.add(pStartIntervals, getFastUniformChain(i).getStartIntervals());
             pEndIntervals = iaE.add(pEndIntervals, getFastUniformChain(i).getEndIntervals());
             pCommonIntervals = iaCom.add(pCommonIntervals, getFastUniformChain(i).getCommonIntervals());
             pCircleIntervals = iaCir.add(pCircleIntervals, getFastUniformChain(i).getCircleIntervals());
-
-//            pCommonIntervalsPosed = iaComPoses.add(pCommonIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Free));
-//            pStartIntervalsPosed = iaSPoses.add(pStartIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Start));
-//            pEndIntervalsPosed = iaEPoses.add(pEndIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.End));
-//            pCircleIntervalsPosed = iaCirPoses.add(pCircleIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Circle));
         }
     }
 

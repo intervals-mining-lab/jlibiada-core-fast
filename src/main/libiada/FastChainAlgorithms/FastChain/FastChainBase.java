@@ -77,6 +77,7 @@ public abstract class FastChainBase {
     }
 
     public void add(String s, int i) throws Exception {
+        intervalsChanged = true;
         int pos = alphabet.indexOf(s);
         if (-1 == pos) {
             alphabet.add(s);
