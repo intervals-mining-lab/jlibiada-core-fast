@@ -67,11 +67,11 @@ public class testFastChainBase extends TestCase {
     }
 
     public void testAdd() throws Exception {
-        FastChainBase chain = new FastChain(3);
+        FastChainBase chain = new FastChain(4);
         chain.add("1", 0);
         chain.add("12", 2);
         chain.add("21", 1);
-        chain.add("1");
+        chain.add("1", 3);
 
         assertEquals(chain.toString(), "1, 21, 12, 1");
     }
