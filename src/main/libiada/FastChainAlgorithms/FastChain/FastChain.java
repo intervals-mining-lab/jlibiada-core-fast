@@ -1,7 +1,6 @@
 package libiada.FastChainAlgorithms.FastChain;
 
 import libiada.FastChainAlgorithms.FastChain.UtilClasses.IntervalsAlgebra;
-import libiada.IntervalAnalysis.LinkUp;
 
 import java.util.HashMap;
 
@@ -64,10 +63,10 @@ public class FastChain extends FastIntervalsChain {
             pCommonIntervals = iaCom.add(pCommonIntervals, getFastUniformChain(i).getCommonIntervals());
             pCircleIntervals = iaCir.add(pCircleIntervals, getFastUniformChain(i).getCircleIntervals());
 
-            pCommonIntervalsPosed = iaComPoses.add(pCommonIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Free));
-            pStartIntervalsPosed = iaSPoses.add(pStartIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Start));
-            pEndIntervalsPosed = iaEPoses.add(pEndIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.End));
-            pCircleIntervalsPosed = iaCirPoses.add(pCircleIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Circle));
+//            pCommonIntervalsPosed = iaComPoses.add(pCommonIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Free));
+//            pStartIntervalsPosed = iaSPoses.add(pStartIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Start));
+//            pEndIntervalsPosed = iaEPoses.add(pEndIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.End));
+//            pCircleIntervalsPosed = iaCirPoses.add(pCircleIntervalsPosed, getFastUniformChain(i).getIntervalPosed(LinkUp.Circle));
         }
     }
 

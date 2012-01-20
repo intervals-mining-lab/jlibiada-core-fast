@@ -1,7 +1,5 @@
 package libiada.FastChainAlgorithms.FastChain;
 
-import libiada.IntervalAnalysis.LinkUp;
-
 import java.util.HashMap;
 
 /**
@@ -65,19 +63,19 @@ public abstract class FastIntervalsChain extends FastChainBase {
         return pCircleIntervals;
     }
 
-    public HashMap<Integer,Integer> getIntervalPosed(LinkUp linkup) throws Exception {
-        if (intervalsChanged)
-            buildIntervals();
-        if (linkup == LinkUp.Free)
-            return pCommonIntervalsPosed;
-        else if (linkup == LinkUp.Start)
-            return pStartIntervalsPosed;
-        else if (linkup == LinkUp.End)
-            return pEndIntervalsPosed;
-        else if (linkup == LinkUp.Circle)
-            return pCircleIntervalsPosed;
-        else return null;
-    }
+//    public HashMap<Integer,Integer> getIntervalPosed(LinkUp linkup) throws Exception {
+//        if (intervalsChanged)
+//            buildIntervals();
+//        if (linkup == LinkUp.Free)
+//            return pCommonIntervalsPosed;
+//        else if (linkup == LinkUp.Start)
+//            return pStartIntervalsPosed;
+//        else if (linkup == LinkUp.End)
+//            return pEndIntervalsPosed;
+//        else if (linkup == LinkUp.Circle)
+//            return pCircleIntervalsPosed;
+//        else return null;
+//    }
 
 
 }
