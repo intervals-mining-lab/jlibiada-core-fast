@@ -30,6 +30,12 @@ public class testFastIntervalsChain extends TestCase{
         assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
         assertEquals(intervals.get(Integer.valueOf(3)), Integer.valueOf(1));
         assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(1));
+
+        intervals = chain.getStartIntervals();
+        assertEquals(intervals.get(Integer.valueOf(1)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(3)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(1));
     }
 
     public void testGetStartIntervals() throws Exception {
@@ -45,6 +51,12 @@ public class testFastIntervalsChain extends TestCase{
         assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(1));
 
         chain.add("4", 1);
+        intervals = chain.getStartIntervals();
+        assertEquals(intervals.get(Integer.valueOf(1)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(3)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(1));
+
         intervals = chain.getStartIntervals();
         assertEquals(intervals.get(Integer.valueOf(1)), Integer.valueOf(1));
         assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
@@ -70,6 +82,12 @@ public class testFastIntervalsChain extends TestCase{
         assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
         assertEquals(intervals.get(Integer.valueOf(3)), Integer.valueOf(1));
         assertEquals(intervals.get(Integer.valueOf(4)), Integer.valueOf(1));
+
+        intervals = chain.getEndIntervals();
+        assertEquals(intervals.get(Integer.valueOf(1)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(3)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(4)), Integer.valueOf(1));
     }
 
     public void testGetCircledIntervals() throws Exception {
@@ -84,6 +102,10 @@ public class testFastIntervalsChain extends TestCase{
         assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(2));
 
         chain.add("4", 1);
+        intervals = chain.getCircleIntervals();
+        assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
+        assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(3));
+
         intervals = chain.getCircleIntervals();
         assertEquals(intervals.get(Integer.valueOf(2)), Integer.valueOf(1));
         assertEquals(intervals.get(Integer.valueOf(5)), Integer.valueOf(3));

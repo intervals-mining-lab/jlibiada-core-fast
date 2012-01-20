@@ -17,7 +17,6 @@ public abstract class FastIntervalsChain extends FastChainBase {
     protected HashMap<Integer,Integer> pCommonIntervalsPosed = new HashMap<Integer, Integer>();
     protected HashMap<Integer,Integer> pStartIntervalsPosed = new HashMap<Integer, Integer>();
     protected HashMap<Integer,Integer> pEndIntervalsPosed = new HashMap<Integer, Integer>();
-    protected HashMap<Integer,Integer> pCircleIntervalsPosed = new HashMap<Integer, Integer>();
 
     public FastIntervalsChain(String chainAsString) throws Exception {
         super(chainAsString);
@@ -62,20 +61,4 @@ public abstract class FastIntervalsChain extends FastChainBase {
         intervalsChanged = false;
         return pCircleIntervals;
     }
-
-//    public HashMap<Integer,Integer> getIntervalPosed(LinkUp linkup) throws Exception {
-//        if (intervalsChanged)
-//            buildIntervals();
-//        if (linkup == LinkUp.Free)
-//            return pCommonIntervalsPosed;
-//        else if (linkup == LinkUp.Start)
-//            return pStartIntervalsPosed;
-//        else if (linkup == LinkUp.End)
-//            return pEndIntervalsPosed;
-//        else if (linkup == LinkUp.Circle)
-//            return pCircleIntervalsPosed;
-//        else return null;
-//    }
-
-
 }
