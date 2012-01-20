@@ -47,11 +47,6 @@ public class FastChain extends FastIntervalsChain {
     }
 
     @Override
-    public int getEventCount() {
-        return events.size();
-    }
-
-    @Override
     protected void buildIntervals() throws Exception {
         IntervalsAlgebra iaS = new IntervalsAlgebra();
         IntervalsAlgebra iaE = new IntervalsAlgebra();

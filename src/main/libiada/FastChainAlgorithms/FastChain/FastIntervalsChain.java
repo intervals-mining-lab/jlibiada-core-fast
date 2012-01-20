@@ -78,4 +78,6 @@ public abstract class FastIntervalsChain extends FastChainBase {
             return pCircleIntervalsPosed;
         else return null;
     }
+
+
 }

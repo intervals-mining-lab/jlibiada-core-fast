@@ -51,9 +51,19 @@ public class testFastChainBase extends TestCase {
         assertEquals(chain.toString(), "123, 1");
     }
 
+    public void testToStringEmpty() {
+        FastChainBase chain = new FastChain();
+        assertEquals(chain.toString(), "");
+    }
+
     public void testEventCount() throws Exception {
-        FastChainBase chain = new FastChain("1231121");
+        FastChainBase chain = new FastChain("1211121");
         assertEquals(chain.getEventCount(), 7);
+    }
+
+    public void testEventCountWithNull() throws Exception {
+        FastChainBase chain = new FastChain("--1-12-");
+        assertEquals(chain.getEventCount(), 3);
     }
 
     public void testAdd() throws Exception {
@@ -61,8 +71,9 @@ public class testFastChainBase extends TestCase {
         chain.add("1", 0);
         chain.add("12", 2);
         chain.add("21", 1);
+        chain.add("1");
 
-        assertEquals(chain.toString(), "1, 21, 12");
+        assertEquals(chain.toString(), "1, 21, 12, 1");
     }
 
     public void testToDividedString() throws Exception {
@@ -114,6 +125,13 @@ public class testFastChainBase extends TestCase {
     public void testEqualsNotEqualLength() throws Exception {
         FastChainBase chain1 = new FastChain("123");
         FastChainBase chain2 = new FastChain("1233");
+
+        assertFalse(chain1.equals(chain2));
+    }
+
+    public void testNotEquals() throws Exception {
+        FastChainBase chain1 = new FastChain("1253");
+        FastChainBase chain2 = new FastChain("1235");
 
         assertFalse(chain1.equals(chain2));
     }

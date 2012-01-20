@@ -13,7 +13,6 @@ public abstract class FastChainBase {
     protected FastAlphabet alphabet = new FastAlphabet();
     protected boolean intervalsChanged = true;
     protected int count = 0;
-    private boolean calculatedCount = false;
 
     public FastChainBase(String chainAsString) throws Exception {
         for (int i = 0; i < chainAsString.length(); i++) {
@@ -64,14 +63,16 @@ public abstract class FastChainBase {
     }
 
     public int getEventCount() {
-        if (!calculatedCount) {
+        int nullEvent = alphabet.indexOf("-");
+        if (nullEvent == -1) {
+            return events.size();
+        } else {
             count = 0;
             for (Integer value : events) {
-                if (value != 0)
+                if (value != nullEvent)
                     count++;
             }
         }
-        calculatedCount = true;
         return count;
     }
 

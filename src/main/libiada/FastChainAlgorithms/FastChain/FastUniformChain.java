@@ -1,7 +1,5 @@
 package libiada.FastChainAlgorithms.FastChain;
 
-import libiada.IntervalAnalysis.LinkUp;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,16 +22,6 @@ public class FastUniformChain extends FastIntervalsChain {
     public FastUniformChain(int length) throws Exception {
         super(length);
         commonConstructor();
-    }
-
-    @Override
-    public int getEventCount() {
-        int count = 0;
-        for (Integer event : events) {
-            if (event == 1)
-                count++;
-        }
-        return count;
     }
 
     private void commonConstructor() throws Exception {
