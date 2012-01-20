@@ -92,7 +92,7 @@
 
     <target name="cover-report" depends="cover-run">
         <cobertura-report datafile="cobertura.ser" format="xml" srcdir="${src.main}" destdir="${reports}"/>
-        <!--<cobertura-report datafile="cobertura.ser" format="html" srcdir="${src.main}" destdir="${reports}/coverage"/>-->
+        <cobertura-report datafile="cobertura.ser" format="html" srcdir="${src.main}" destdir="${reports}/coverage"/>
     </target>
 
 
