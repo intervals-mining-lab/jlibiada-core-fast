@@ -18,7 +18,7 @@ public class RoCalculator extends FastCalculatorBase {
         return 1;
     }
 
-    public double getValue(FastUniformChain chain, LinkUp linkUp) {
+    public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
         ArrayList<Integer> poses = chain.getPositions();
         double result = 0;
         for (int i = 0; i < poses.size(); i++) {

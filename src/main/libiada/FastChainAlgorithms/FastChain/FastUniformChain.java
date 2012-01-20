@@ -66,6 +66,7 @@ public class FastUniformChain extends FastIntervalsChain {
 
     @Override
     protected void buildIntervals() throws Exception {
+        buildPoses();
         pCommonIntervals.clear();
         pStartIntervals.clear();
         pEndIntervals.clear();
@@ -153,13 +154,15 @@ public class FastUniformChain extends FastIntervalsChain {
         return alphabet.get(1);
     }
 
-    public ArrayList<Integer> getPositions() {
-        if (intervalsChanged)
-            buildPoses();
+    public ArrayList<Integer> getPositions() throws Exception {
+        if (intervalsChanged) {
+            buildIntervals();
+        }
         return poses;
     }
 
     private void buildPoses() {
+        poses.clear();
         for (int i = 0; i < length(); i++) {
             if (events.get(i) != 0)
                 poses.add(i+1);

@@ -19,7 +19,7 @@ public class MuCalculator extends FastCalculatorBase {
     }
 
     @Override
-    public double getValue(FastUniformChain chain, LinkUp linkUp) {
+    public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
         ArrayList<Integer> poses = chain.getPositions();
         double result = 1;
         for (int i = 0; i < poses.size(); i++) {
