@@ -64,4 +64,10 @@ public class testFastAlphabet extends TestCase {
         alphabet.add("12");
         assertEquals(alphabet.size(), 3);
     }
+
+    public void testIsContain() throws Exception {
+        alphabet.add("1");
+        assertTrue(alphabet.isContain("1"));
+        assertFalse(alphabet.isContain("2"));
+    }
 }
