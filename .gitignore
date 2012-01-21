@@ -1,0 +1,12 @@
+.idea
+.idea/*
+*.iml
+out
+out/*
+dist
+dist/*
+build
+build/*
+reports
+reports/*
+cobertura.ser

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jlibiada-core-fast" default="run">
+    <property name="build" value="build"/>
+    <property name="build.main" value="${build}/main"/>
+    <property name="build.test" value="${build}/test"/>
+    <property name="build.instr" value="${build}/instr"/>
+
+    <property name="src" value="src"/>
+    <property name="src.main" value="${src}/main"/>
+    <property name="src.test" value="${src}/test"/>
+
+    <property name="lib" value="lib"/>
+
+    <property name="checkstyle.policy" location="checkstyle-policy.xml"/>
+    <property name="reports" location="reports/checkstyle"/>
+    <property name="checkstyle.report.xml" location="${reports}/checkstyle.xml" />
+    <property name="coverage.report.xml" location="${reports}/coverage.xml" />
+
+    <property name="cobertura.dir" value="/usr/share/java/cobertura"/>
+
+    <target name="checkstyle-init">
+        <path id="checkstyle.lib" >
+            <pathelement location="/usr/share/ant/lib/checkstyle-5.5-all.jar" />
+        </path>
+        <taskdef resource="checkstyletask.properties" classpathref="checkstyle.lib"/>
+        <mkdir dir="${reports}" />
+    </target>
+
+    <target name="checkstyle-run" depends="checkstyle-init">
+        <checkstyle failOnViolation="false"
+                    failureProperty="checkstyle.failed"
+                    config="${checkstyle.policy}">
+            <formatter type="plain"/>
+            <formatter type="xml" toFile="${checkstyle.report.xml}"/>
+            <fileset dir="${src}" includes="**/*.java"/>
+        </checkstyle>
+    </target>
+
+    <path id="cobertura.classpath">
+        <fileset dir="${cobertura.dir}">
+            <!--<include name="cobertura.jar" />-->
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+    <target name="cover-init">
+        <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+    </target>
+
+    <target name="cover-instrumentation" depends="cover-init">
+        <delete file="cobertura.ser"/>
+        <delete dir="${build.instr}" />
+        <cobertura-instrument todir="${build.instr}">
+            <fileset dir="${build}">
+                <include name="**/*.class"/>
+                <exclude name="**/test*.class"/>
+            </fileset>
+        </cobertura-instrument>
+    </target>
+
+    <path id="test.compile.classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${build.main}"/>
+    </path>
+
+    <path id="test.classpath">
+        <path refid="test.compile.classpath"/>
+        <pathelement location="${build.test}"/>
+    </path>
+
+    <target name="cover-run" depends="cover-instrumentation">
+        <mkdir dir="${reports}/coverage/tests" />
+        <junit showoutput="true" printsummary="true" fork="yes">
+            <jvmarg value="-XX:-UseSplitVerifier"/>
+            <sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser"/>
+
+            <classpath location="${build.instr}" />
+
+            <classpath refid="test.classpath" />
+
+            <classpath refid="cobertura.classpath" />
+
+            <formatter type="xml"/>
+            <batchtest todir="${reports}/coverage/tests" unless="testcase">
+                <fileset dir="${src}">
+					<include name="**/test*.java" />
+				</fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="cover-report" depends="cover-run">
+        <cobertura-report datafile="cobertura.ser" format="xml" srcdir="${src.main}" destdir="${reports}"/>
+        <cobertura-report datafile="cobertura.ser" format="html" srcdir="${src.main}" destdir="${reports}/coverage"/>
+    </target>
+
+
+    <target name="run">
+        <antcall target="checkstyle-run" />
+        <antcall target="cover-report"/>
+    </target>
+</project>
