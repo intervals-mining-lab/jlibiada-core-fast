@@ -3,6 +3,7 @@ package test.FastChainAlgoritms.FastChain.Calculators;
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
+import libiada.IntervalAnalysis.LinkUp;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,5 +18,22 @@ public class testRoCalculator extends TestCase {
 
         double testRes = (1.0 + 3.0 + 5.0 + 6.0) / (1.0 + 2.0 + 3.0 + 4.0 + 5.0 + 6.0);
         assertEquals(testRes, ro);
+    }
+
+    public void testNotUniformChainCharacteristic() throws Exception {
+        FastChain chain = new FastChain("121211");
+        assertEquals(FastCalculatorFactory.getRo().getValue(chain, LinkUp.Start), 1.0);
+    }
+
+    public void testGetType() {
+        assertEquals(FastCalculatorFactory.getRo().getType(), "double");
+    }
+
+    public void testGetGroup() {
+        assertEquals(FastCalculatorFactory.getRo().getGroup(), "Positioned");
+    }
+
+    public void testGetName() {
+        assertEquals(FastCalculatorFactory.getRo().getName(), "Ro");
     }
 }

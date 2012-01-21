@@ -61,15 +61,29 @@ public class FastCalculatorFactory {
         return new FastAverageGeometryInterval();
     }
 
-    public static FastCalculatorBase getBinaryAverageGeomertyInterval(String sym1, String sym2) {
+    public static FastCalculatorBase getBinaryAverageGeomertyInterval(String sym1, String sym2) throws Exception {
+        if (sym1 == null || sym1.equalsIgnoreCase(""))
+            throw new Exception("Error: event one not defined");
+        if (sym2 == null || sym2.equalsIgnoreCase(""))
+            throw new Exception("Error: event two not defined");
         return new BinaryFastAverageGeometryInterval(sym1, sym2);
     }
 
-    public static FastCalculatorBase getBinaryAverageRemoteness(String sym1, String sym2) {
+    public static FastCalculatorBase getBinaryAverageRemoteness(String sym1, String sym2) throws Exception {
+        if (sym1 == null || sym1.equalsIgnoreCase(""))
+            throw new Exception("Error: event one not defined");
+        if (sym2 == null || sym2.equalsIgnoreCase(""))
+            throw new Exception("Error: event two not defined");
         return new BinaryFastAverageRemoteness(sym1, sym2);
     }
 
-    public static FastCalculatorBase getPositionedAverageRemoteness(String event, HashSet<Integer> poses, int period) {
+    public static FastCalculatorBase getPositionedAverageRemoteness(String event, HashSet<Integer> poses, int period) throws Exception {
+        if (event == null || event.equalsIgnoreCase(""))
+            throw new Exception("Error of event format");
+        if (poses == null || poses.size() == 0)
+            throw new Exception("Error: poses not defined");
+        if (period == 0)
+            throw new Exception("Period could not be 0");
         return new FastPositionedAverageRemoteness(event, poses, period);
     }
 

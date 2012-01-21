@@ -8,8 +8,8 @@ import java.util.HashSet;
  * Date: 30.07.11
  * Time: 16:04
  */
-public class FastPeriodicChainConverter {
-    public FastChain toPeriodicChain(FastChain chain, HashSet<Integer> poses, int lGrameLength) throws Exception {
+public abstract class FastPeriodicChainConverter {
+    public static FastChain toPeriodicChain(FastChain chain, HashSet<Integer> poses, int lGrameLength) throws Exception {
         FastChain result = new FastChain(chain.length());
         for (Integer pos : poses) {
             for (int i = 0; i < chain.length(); i++) {

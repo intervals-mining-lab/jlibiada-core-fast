@@ -26,8 +26,7 @@ public class FastPositionedEventCount extends FastCalculatorBase {
 
     @Override
     public double getValue(FastChain chain, LinkUp linkUp) throws Exception {
-        FastPeriodicChainConverter converter = new FastPeriodicChainConverter();
-        FastUniformChain uchain = converter.toPeriodicChain(chain, poses, period).getFastUniformChain(event);
+        FastUniformChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period).getFastUniformChain(event);
         if (uchain.getAlphabet().size() <= 1)
             return 0;
         return FastCalculatorFactory.getEventCount().getValue(uchain, linkUp);

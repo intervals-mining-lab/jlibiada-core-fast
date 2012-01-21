@@ -157,6 +157,7 @@ public class FastUniformChain extends FastIntervalsChain {
     public ArrayList<Integer> getPositions() throws Exception {
         if (intervalsChanged) {
             buildIntervals();
+            intervalsChanged = false;
         }
         return poses;
     }

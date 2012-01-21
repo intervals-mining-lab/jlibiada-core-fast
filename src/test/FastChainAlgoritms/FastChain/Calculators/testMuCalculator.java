@@ -3,6 +3,7 @@ package test.FastChainAlgoritms.FastChain.Calculators;
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
+import libiada.IntervalAnalysis.LinkUp;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,7 +12,7 @@ import libiada.FastChainAlgorithms.FastChain.FastChain;
  * Time: 3:09
  */
 public class testMuCalculator extends TestCase {
-    public void testMuValue() throws Exception {
+    public void testMuValueUniform() throws Exception {
         FastChain ch = new FastChain("121211");
         double mu = FastCalculatorFactory.getMu().getValue(ch.getFastUniformChain("1"), null);
 
@@ -19,8 +20,20 @@ public class testMuCalculator extends TestCase {
         assertEquals(testRes, mu);
     }
 
-    public void testTest() throws Exception {
-        FastChain ch = new FastChain();
-        assertTrue(true);
+    public void testMuValueNotUniform() throws Exception {
+        FastChain chain = new FastChain("121211");
+        assertEquals(FastCalculatorFactory.getMu().getValue(chain, LinkUp.Start), 1.0);
+    }
+
+    public void testGetType() {
+        assertEquals(FastCalculatorFactory.getMu().getType(), "double");
+    }
+
+    public void testGetGroup() {
+        assertEquals(FastCalculatorFactory.getMu().getGroup(), "Positioned");
+    }
+
+    public void testGetName() {
+        assertEquals(FastCalculatorFactory.getMu().getName(), "Mu");
     }
 }
