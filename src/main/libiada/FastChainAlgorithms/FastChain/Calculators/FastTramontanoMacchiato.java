@@ -133,7 +133,7 @@ public class FastTramontanoMacchiato extends FastCalculatorBase {
 
     @Override
     public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        return 0;  //TODO: "Заполнить метод"
+        throw new Exception("Error: method does not defined for unifom chain");
     }
 
     @Override

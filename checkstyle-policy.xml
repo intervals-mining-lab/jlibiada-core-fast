@@ -26,9 +26,9 @@
         <module name="InterfaceIsType"/>
         <module name="VisibilityModifier"/>
         <module name="UpperEll"/>
-        <!--<module name="JavadocType">-->
-            <!--<property name="scope" value="public"/>-->
-        <!--</module>-->
+        <module name="JavadocType">
+            <property name="scope" value="public"/>
+        </module>
         <module name="JavadocStyle"/>
     </module>
 </module>

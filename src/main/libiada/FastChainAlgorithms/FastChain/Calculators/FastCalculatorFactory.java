@@ -8,7 +8,7 @@ import java.util.HashSet;
  * Date: 29.07.11
  * Time: 0:46
  */
-public class FastCalculatorFactory {
+public abstract class FastCalculatorFactory {
     public static FastCalculatorBase getVolume() {
         return new FastVolume();
     }
@@ -41,7 +41,13 @@ public class FastCalculatorFactory {
         return new FastLength();
     }
 
-    public static FastCalculatorBase getPositionedPropability(String event, HashSet<Integer> poses, int period) {
+    public static FastCalculatorBase getPositionedPropability(String event, HashSet<Integer> poses, int period) throws Exception {
+        if (event == null || event.equalsIgnoreCase(""))
+            throw new Exception("Error: event does not define");
+        if (poses == null || poses.size() == 0)
+            throw new Exception("Error: poses does not define");
+        if (period == 0)
+            throw new Exception("Error: period is 0");
         return new FastPositionedPropability(event, poses, period);
     }
 
@@ -49,7 +55,13 @@ public class FastCalculatorFactory {
         return new FastShepherd();
     }
 
-    public static FastCalculatorBase getPositionedEventCount(String event, HashSet<Integer> poses, int period) {
+    public static FastCalculatorBase getPositionedEventCount(String event, HashSet<Integer> poses, int period) throws Exception {
+        if (event == null || event.equalsIgnoreCase(""))
+            throw new Exception("Error: event does not define");
+        if (poses == null || poses.size() == 0)
+            throw new Exception("Error: poses does not define");
+        if (period == 0)
+            throw new Exception("Error: period is 0");
         return new FastPositionedEventCount(event, poses, period);
     }
 
