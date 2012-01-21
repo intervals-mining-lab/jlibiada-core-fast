@@ -27,7 +27,7 @@ public class FastPropability extends FastCalculatorBase {
         super.getValue(chain, linkUp);
         double length = chain.length();
         double count = chain.getEventCount();
-        return (double)((double)count / (double)length);
+        return count / length;
     }
 
     @Override

@@ -125,8 +125,7 @@ public class FastTramontanoMacchiato extends FastCalculatorBase {
         double value = 0;
         for (int i = 0; i < tripleChain.length(); i++) {
             String triple = tripleChain.get(i);
-            if (3 == triple.length())
-                value += fOfTriple.get(triple);
+            value += fOfTriple.get(triple);
         }
         return value / tripleChain.length();
     }

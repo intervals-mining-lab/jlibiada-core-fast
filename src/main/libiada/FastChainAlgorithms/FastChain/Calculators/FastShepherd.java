@@ -54,12 +54,12 @@ public class FastShepherd extends FastCalculatorBase {
 
     @Override
     public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        return 0;  //TODO: "Заполнить метод"
+        throw new Exception("Error: method does not define for uniform chain");
     }
 
     @Override
     public String getName() {
-        return "Shepherd";  //TODO: "Заполнить метод"
+        return "Shepherd";
     }
 
     @Override
