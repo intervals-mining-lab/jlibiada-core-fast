@@ -14,19 +14,17 @@ import java.util.HashSet;
  * Time: 20:15
  */
 public class FastPositionedEventCount extends FastCalculatorBase {
-    private String event = "";
     private HashSet<Integer> poses = null;
     private int period = 3;
 
-    public FastPositionedEventCount(String event, HashSet<Integer> poses, int period) {
-        this.event = event;
+    public FastPositionedEventCount(HashSet<Integer> poses, int period) {
         this.poses = poses;
         this.period = period;
     }
 
     @Override
     public double getValue(FastChain chain, LinkUp linkUp) throws Exception {
-        FastUniformChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period).getFastUniformChain(event);
+        FastChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period);
         if (uchain.getAlphabet().size() <= 1)
             return 0;
         return FastCalculatorFactory.getEventCount().getValue(uchain, linkUp);
@@ -34,12 +32,19 @@ public class FastPositionedEventCount extends FastCalculatorBase {
 
     @Override
     public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        return 0;  //TODO: "Заполнить метод"
+        super.getValue(chain, linkUp);
+        FastUniformChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period);
+        if (uchain.getAlphabet().size() <= 1)
+            return 0;
+        return FastCalculatorFactory.getEventCount().getValue(uchain, linkUp);
     }
 
     @Override
     public String getName() {
-        return "n(" + event + getPos(poses) + ")";
+        if (event == null)
+            return "n(" + getPos(poses) + ")";
+        else
+            return "n(" + event + ", " + getPos(poses) + ")";
     }
 
     @Override
@@ -57,6 +62,6 @@ public class FastPositionedEventCount extends FastCalculatorBase {
         for (Integer pos : poses) {
             result += ", " + Integer.toString(pos + 1);
         }
-        return result;
+        return result.substring(2);
     }
 }

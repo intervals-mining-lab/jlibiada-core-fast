@@ -41,28 +41,24 @@ public abstract class FastCalculatorFactory {
         return new FastLength();
     }
 
-    public static FastCalculatorBase getPositionedPropability(String event, HashSet<Integer> poses, int period) throws Exception {
-        if (event == null || event.equalsIgnoreCase(""))
-            throw new Exception("Error: event does not define");
+    public static FastCalculatorBase getPositionedPropability(HashSet<Integer> poses, int period) throws Exception {
         if (poses == null || poses.size() == 0)
             throw new Exception("Error: poses does not define");
         if (period == 0)
             throw new Exception("Error: period is 0");
-        return new FastPositionedPropability(event, poses, period);
+        return new FastPositionedPropability(poses, period);
     }
 
     public static FastCalculatorBase getFastShepherd() {
         return new FastShepherd();
     }
 
-    public static FastCalculatorBase getPositionedEventCount(String event, HashSet<Integer> poses, int period) throws Exception {
-        if (event == null || event.equalsIgnoreCase(""))
-            throw new Exception("Error: event does not define");
+    public static FastCalculatorBase getPositionedEventCount(HashSet<Integer> poses, int period) throws Exception {
         if (poses == null || poses.size() == 0)
             throw new Exception("Error: poses does not define");
         if (period == 0)
             throw new Exception("Error: period is 0");
-        return new FastPositionedEventCount(event, poses, period);
+        return new FastPositionedEventCount(poses, period);
     }
 
     public static FastCalculatorBase getFastTramontanoMacchiato() {
@@ -89,14 +85,12 @@ public abstract class FastCalculatorFactory {
         return new BinaryFastAverageRemoteness(sym1, sym2);
     }
 
-    public static FastCalculatorBase getPositionedAverageRemoteness(String event, HashSet<Integer> poses, int period) throws Exception {
-        if (event == null || event.equalsIgnoreCase(""))
-            throw new Exception("Error of event format");
+    public static FastCalculatorBase getPositionedAverageRemoteness(HashSet<Integer> poses, int period) throws Exception {
         if (poses == null || poses.size() == 0)
             throw new Exception("Error: poses not defined");
         if (period == 0)
             throw new Exception("Period could not be 0");
-        return new FastPositionedAverageRemoteness(event, poses, period);
+        return new FastPositionedAverageRemoteness(poses, period);
     }
 
     public static FastCalculatorBase getAverageWordLength() {

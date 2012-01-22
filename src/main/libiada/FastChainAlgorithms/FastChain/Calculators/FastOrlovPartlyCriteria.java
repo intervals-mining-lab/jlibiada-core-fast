@@ -40,7 +40,7 @@ public class FastOrlovPartlyCriteria extends FastCalculatorBase {
 
     @Override
     public String getType() {
-        return "double";  //TODO: "Заполнить метод"
+        return "double";
     }
 
     @Override

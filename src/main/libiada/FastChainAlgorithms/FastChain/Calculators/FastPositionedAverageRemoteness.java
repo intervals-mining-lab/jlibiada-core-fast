@@ -14,32 +14,35 @@ import java.util.HashSet;
  * Time: 15:15
  */
 public class FastPositionedAverageRemoteness extends FastCalculatorBase {
-    private String event = "";
     private HashSet<Integer> poses = null;
     private int period = 0;
 
-    public FastPositionedAverageRemoteness(String event, HashSet<Integer> poses, int period) {
-        this.event = event;
+    public FastPositionedAverageRemoteness(HashSet<Integer> poses, int period) {
         this.poses = poses;
         this.period = period;
     }
 
     @Override
     public double getValue(FastChain chain, LinkUp linkUp) throws Exception {
-        FastUniformChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period).getFastUniformChain(event);
-        if (uchain.getAlphabet().size() <= 1)
-            return Double.MAX_VALUE;
+        FastChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period);
         return FastCalculatorFactory.getAverageRemoteness().getValue(uchain, linkUp);
     }
 
     @Override
     public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        return 0;  //TODO: "Заполнить метод"
+        super.getValue(chain, linkUp);
+        FastUniformChain uchain = FastPeriodicChainConverter.toPeriodicChain(chain, poses, period);
+        if (uchain.getAlphabet().size() <= 1)
+            return 0;
+        return FastCalculatorFactory.getAverageRemoteness().getValue(uchain, linkUp);
     }
 
     @Override
     public String getName() {
-        return "g(" + event + getPos(poses) + ")";
+        if (event == null)
+            return "g(" + getPos(poses) + ")";
+        else
+            return "g(" + event + ", " + getPos(poses) + ")";
     }
 
     @Override
@@ -57,6 +60,6 @@ public class FastPositionedAverageRemoteness extends FastCalculatorBase {
         for (Integer pos : poses) {
             result += ", " + Integer.toString(pos + 1);
         }
-        return result;
+        return result.substring(2);
     }
 }

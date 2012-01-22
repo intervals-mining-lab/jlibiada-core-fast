@@ -84,7 +84,7 @@ public class testFastUniformChain extends TestCase {
     public void testAlphabetPower() throws Exception {
         FastChain chain = new FastChain("2111111221");
         FastUniformChain uChain = chain.getFastUniformChain("1");
-        assertEquals(uChain.alphabetPower(), 1);
+        assertEquals(uChain.alphabetPower(), 2);
     }
 
     public void testGetEvent() throws Exception {

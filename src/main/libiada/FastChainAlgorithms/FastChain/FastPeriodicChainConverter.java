@@ -19,4 +19,15 @@ public abstract class FastPeriodicChainConverter {
         }
         return result;
     }
+
+    public static FastUniformChain toPeriodicChain(FastUniformChain chain, HashSet<Integer> poses, int lGrameLength) throws Exception {
+        FastUniformChain result = new FastUniformChain(chain.length());
+        for (Integer pos : poses) {
+            for (int i = 0; i < chain.length(); i++) {
+                if (i % lGrameLength == pos)
+                    result.add(chain.get(i), i);
+            }
+        }
+        return result;
+    }
 }

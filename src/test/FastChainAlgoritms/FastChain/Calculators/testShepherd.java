@@ -12,7 +12,7 @@ import libiada.IntervalAnalysis.LinkUp;
  * Time: 22:27
  */
 public class testShepherd extends TestCase {
-    public void testUniformValue() throws Exception {
+    public void testNotUniformValue() throws Exception {
         FastChain chain = new FastChain("AGGCTA");
         double value = FastCalculatorFactory.getFastShepherd().getValue(chain, LinkUp.Start);
         assertEquals(value, 1.21, 0.1);
@@ -22,7 +22,7 @@ public class testShepherd extends TestCase {
         assertEquals(value, 1.2185, 0.1);
     }
 
-    public void testNotUniformValue() throws Exception {
+    public void testUniformValue() throws Exception {
         FastChain chain = new FastChain("AGGCTA");
         try{
             FastCalculatorFactory.getFastShepherd().getValue(chain.getFastUniformChain("1"), LinkUp.Start);

@@ -143,7 +143,7 @@ public class FastUniformChain extends FastIntervalsChain {
 
     @Override
     public int alphabetPower() {
-        return 1;
+        return alphabet.size();
     }
 
     public void setCount(int count) {
@@ -151,6 +151,8 @@ public class FastUniformChain extends FastIntervalsChain {
     }
 
     public String getEvent() {
+        if (alphabet.size() == 1)
+            return alphabet.get(0);
         return alphabet.get(1);
     }
 

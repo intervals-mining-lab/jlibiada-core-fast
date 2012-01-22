@@ -25,6 +25,8 @@ public class FastGamaut extends FastCalculatorBase {
     @Override
     public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
         super.getValue(chain, linkUp);
+        if (chain.alphabetPower() <= 1)
+            return 0;
         double result = 0;
         for (Map.Entry<Integer, Integer> entry : chain.getCommonIntervals().entrySet()) {
             result += entry.getValue() * Math.log10(entry.getKey()) / Math.log10(2);

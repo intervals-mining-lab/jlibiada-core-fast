@@ -35,35 +35,13 @@ public class testFastCalculatorFactory extends TestCase{
     public void testGetFastPositionedAverageRemoteness() throws Exception {
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(1);
-        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedAverageRemoteness("1", poses, 3);
+        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedAverageRemoteness(poses, 3);
         assertEquals(calculator.getClass(), FastPositionedAverageRemoteness.class);
-    }
-
-    public void testGetFastPositionedAverageRemotenessError1() throws Exception {
-        try {
-            HashSet<Integer> poses = new HashSet<Integer>();
-            poses.add(1);
-            FastCalculatorFactory.getPositionedAverageRemoteness("", poses, 2);
-        } catch (Exception e) {
-            return;
-        }
-        fail();
-    }
-
-    public void testGetFastPositionedAverageRemotenessError2() throws Exception {
-        try {
-            HashSet<Integer> poses = new HashSet<Integer>();
-            poses.add(1);
-            FastCalculatorFactory.getPositionedAverageRemoteness(null, poses, 2);
-        } catch (Exception e) {
-            return;
-        }
-        fail();
     }
 
     public void testGetFastPositionedAverageRemotenessError3() throws Exception {
         try {
-            FastCalculatorFactory.getPositionedAverageRemoteness("A", null, 2);
+            FastCalculatorFactory.getPositionedAverageRemoteness(null, 2);
         } catch (Exception e) {
             return;
         }
@@ -73,7 +51,7 @@ public class testFastCalculatorFactory extends TestCase{
     public void testGetFastPositionedAverageRemotenessError4() throws Exception {
         try {
             HashSet<Integer> poses = new HashSet<Integer>();
-            FastCalculatorFactory.getPositionedAverageRemoteness("A", poses, 2);
+            FastCalculatorFactory.getPositionedAverageRemoteness(poses, 2);
         } catch (Exception e) {
             return;
         }
@@ -84,7 +62,7 @@ public class testFastCalculatorFactory extends TestCase{
         try {
             HashSet<Integer> poses = new HashSet<Integer>();
             poses.add(1);
-            FastCalculatorFactory.getPositionedAverageRemoteness("A", poses, 0);
+            FastCalculatorFactory.getPositionedAverageRemoteness(poses, 0);
         } catch (Exception e) {
             return;
         }
@@ -186,36 +164,13 @@ public class testFastCalculatorFactory extends TestCase{
     public void testGetPositionedEventCount() throws Exception {
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(1);
-        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedEventCount("A", poses, 3);
+        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedEventCount(poses, 3);
         assertEquals(calculator.getClass(), FastPositionedEventCount.class);
-    }
-
-    public void testGetPositionedEventCountError1() throws Exception {
-        HashSet<Integer> poses = new HashSet<Integer>();
-        poses.add(1);
-        try{
-            FastCalculatorFactory.getPositionedEventCount(null, poses, 3);
-        }
-        catch (Exception e) {
-            return;
-        }
-        fail();
-    }
-
-    public void testGetPositionedEventCountError2() throws Exception {
-        HashSet<Integer> poses = new HashSet<Integer>();
-        poses.add(1);
-        try{
-            FastCalculatorFactory.getPositionedEventCount("", poses, 3);
-        } catch (Exception e) {
-            return;
-        }
-        fail();
     }
 
     public void testGetPositionedEventCountError3() throws Exception {
         try{
-            FastCalculatorFactory.getPositionedEventCount("A", null, 3);
+            FastCalculatorFactory.getPositionedEventCount(null, 3);
         } catch (Exception e) {
             return;
         }
@@ -225,7 +180,7 @@ public class testFastCalculatorFactory extends TestCase{
     public void testGetPositionedEventCountError4() throws Exception {
         HashSet<Integer> poses = new HashSet<Integer>();
         try{
-            FastCalculatorFactory.getPositionedEventCount("A", poses, 3);
+            FastCalculatorFactory.getPositionedEventCount(poses, 3);
         } catch (Exception e) {
             return;
         }
@@ -236,7 +191,7 @@ public class testFastCalculatorFactory extends TestCase{
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(1);
         try{
-        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedEventCount("A", poses, 0);
+        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedEventCount(poses, 0);
         } catch (Exception e) {
             return;
         }
@@ -251,37 +206,15 @@ public class testFastCalculatorFactory extends TestCase{
     public void testGetPositionedProbability() throws Exception {
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(0);
-        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedPropability("A", poses, 3);
+        FastCalculatorBase calculator = FastCalculatorFactory.getPositionedPropability(poses, 3);
         assertEquals(calculator.getClass(), FastPositionedPropability.class);
-    }
-
-    public void testGetPositionedProbabilityError1() throws Exception {
-        HashSet<Integer> poses = new HashSet<Integer>();
-        poses.add(0);
-        try{
-            FastCalculatorFactory.getPositionedPropability(null, poses, 3);
-        } catch (Exception e) {
-            return;
-        }
-        fail();
-    }
-
-    public void testGetPositionedProbabilityError2() throws Exception {
-        HashSet<Integer> poses = new HashSet<Integer>();
-        poses.add(0);
-        try{
-            FastCalculatorFactory.getPositionedPropability("", poses, 3);
-        } catch (Exception e) {
-            return;
-        }
-        fail();
     }
 
     public void testGetPositionedProbabilityError3() throws Exception {
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(0);
         try{
-            FastCalculatorFactory.getPositionedPropability("A", null, 3);
+            FastCalculatorFactory.getPositionedPropability(null, 3);
         } catch (Exception e) {
             return;
         }
@@ -291,7 +224,7 @@ public class testFastCalculatorFactory extends TestCase{
     public void testGetPositionedProbabilityError4() throws Exception {
         HashSet<Integer> poses = new HashSet<Integer>();
         try{
-            FastCalculatorFactory.getPositionedPropability("A", poses, 3);
+            FastCalculatorFactory.getPositionedPropability(poses, 3);
         } catch (Exception e) {
             return;
         }
@@ -302,7 +235,7 @@ public class testFastCalculatorFactory extends TestCase{
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(0);
         try{
-            FastCalculatorFactory.getPositionedPropability("A", poses, 0);
+            FastCalculatorFactory.getPositionedPropability(poses, 0);
         } catch (Exception e) {
             return;
         }

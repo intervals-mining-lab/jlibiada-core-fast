@@ -2,6 +2,7 @@ package test.FastChainAlgoritms.FastChain;
 
 import junit.framework.TestCase;
 import libiada.FastChainAlgorithms.FastChain.FastChain;
+import libiada.FastChainAlgorithms.FastChain.FastChainBase;
 import libiada.FastChainAlgorithms.FastChain.FastPeriodicChainConverter;
 
 import java.util.HashSet;
@@ -18,7 +19,7 @@ public class testFastPeriodicChainConverter extends TestCase {
         HashSet<Integer> poses = new HashSet<Integer>();
         poses.add(0);
         poses.add(1);
-        FastChain periodic = FastPeriodicChainConverter.toPeriodicChain(chain, poses, 3);
+        FastChainBase periodic = FastPeriodicChainConverter.toPeriodicChain(chain, poses, 3);
         assertEquals("1, 2, -, 4, 5, -, 7, 8, -", periodic.toString());
     }
 }
