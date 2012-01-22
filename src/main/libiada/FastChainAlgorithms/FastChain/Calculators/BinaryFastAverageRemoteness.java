@@ -15,7 +15,6 @@ import libiada.IntervalAnalysis.LinkUp;
 public class BinaryFastAverageRemoteness extends FastCalculatorBase {
     private String sym1 = "";
     private String sym2 = "";
-    private String linkUp = "";
 
     public BinaryFastAverageRemoteness(String s1, String s2) {
         this.sym1 = s1;
@@ -24,17 +23,12 @@ public class BinaryFastAverageRemoteness extends FastCalculatorBase {
 
     @Override
     public double getValue(FastChain chain, LinkUp linkUp) throws Exception {
-        this.linkUp = linkUp.toString();
+        //TODO: "Check calculating correct"
         FastAlphabet alphabet = chain.getAlphabet();
         FastUniformChain fastUniformChain1 = chain.getFastUniformChain(alphabet.indexOf(sym1));
         FastUniformChain fastUniformChain2 = chain.getFastUniformChain(alphabet.indexOf(sym2));
         FastUniformChain binaryChain = FastChainAlgebra.composition(fastUniformChain1, fastUniformChain2);
         return FastCalculatorFactory.getAverageRemoteness().getValue(binaryChain, linkUp);
-    }
-
-    @Override
-    public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        return 0;  //TODO: "Заполнить метод"
     }
 
     @Override

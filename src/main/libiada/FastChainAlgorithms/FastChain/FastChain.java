@@ -47,21 +47,16 @@ public class FastChain extends FastIntervalsChain {
 
     @Override
     protected void buildIntervals() throws Exception {
-        IntervalsAlgebra iaS = new IntervalsAlgebra();
-        IntervalsAlgebra iaE = new IntervalsAlgebra();
-        IntervalsAlgebra iaCom = new IntervalsAlgebra();
-        IntervalsAlgebra iaCir = new IntervalsAlgebra();
-
         pStartIntervals.clear();
         pEndIntervals.clear();
         pCommonIntervals.clear();
         pCircleIntervals.clear();
 
         for (int i = 0; i < alphabet.size(); i++) {
-            pStartIntervals = iaS.add(pStartIntervals, getFastUniformChain(i).getStartIntervals());
-            pEndIntervals = iaE.add(pEndIntervals, getFastUniformChain(i).getEndIntervals());
-            pCommonIntervals = iaCom.add(pCommonIntervals, getFastUniformChain(i).getCommonIntervals());
-            pCircleIntervals = iaCir.add(pCircleIntervals, getFastUniformChain(i).getCircleIntervals());
+            pStartIntervals = IntervalsAlgebra.add(pStartIntervals, getFastUniformChain(i).getStartIntervals());
+            pEndIntervals = IntervalsAlgebra.add(pEndIntervals, getFastUniformChain(i).getEndIntervals());
+            pCommonIntervals = IntervalsAlgebra.add(pCommonIntervals, getFastUniformChain(i).getCommonIntervals());
+            pCircleIntervals = IntervalsAlgebra.add(pCircleIntervals, getFastUniformChain(i).getCircleIntervals());
         }
     }
 

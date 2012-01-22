@@ -28,7 +28,7 @@ public class FastAverageGeometryInterval extends FastCalculatorBase {
 
     @Override
     public String getName() {
-        return "gelta_g" + super.getName();
+        return "delta_g" + super.getName();
     }
 
     @Override

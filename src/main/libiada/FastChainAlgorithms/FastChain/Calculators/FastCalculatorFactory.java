@@ -65,7 +65,7 @@ public abstract class FastCalculatorFactory {
         return new FastTramontanoMacchiato();
     }
 
-    public static FastCalculatorBase getGeometryInterval() {
+    public static FastCalculatorBase getAverageGeometryInterval() {
         return new FastAverageGeometryInterval();
     }
 

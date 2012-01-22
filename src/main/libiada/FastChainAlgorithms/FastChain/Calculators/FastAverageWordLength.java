@@ -22,13 +22,8 @@ public class FastAverageWordLength extends FastCalculatorBase {
 
     @Override
     public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        double result = 0;
-        for (int i = 0; i < chain.length(); i++) {
-            if (chain.get(i) == "-")
-                continue;
-            result += chain.get(i).length();
-        }
-        return result / chain.length();
+        super.getValue(chain, linkUp);
+        return chain.getEvent().length();
     }
 
     @Override
@@ -43,6 +38,6 @@ public class FastAverageWordLength extends FastCalculatorBase {
 
     @Override
     public String getGroup() {
-        return "Common";
+        return "Propability";
     }
 }

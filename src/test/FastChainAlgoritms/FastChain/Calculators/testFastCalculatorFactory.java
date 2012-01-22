@@ -152,7 +152,7 @@ public class testFastCalculatorFactory extends TestCase{
     }
 
     public void testGetGeometryInterval() throws Exception {
-        FastCalculatorBase calculator = FastCalculatorFactory.getGeometryInterval();
+        FastCalculatorBase calculator = FastCalculatorFactory.getAverageGeometryInterval();
         assertEquals(calculator.getClass(), FastAverageGeometryInterval.class);
     }
 

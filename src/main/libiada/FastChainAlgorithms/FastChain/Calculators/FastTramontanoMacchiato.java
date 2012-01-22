@@ -120,8 +120,7 @@ public class FastTramontanoMacchiato extends FastCalculatorBase {
     }
 
     private double getF(FastChain chain) throws Exception {
-        ChainToTripleConverter converter = new ChainToTripleConverter();
-        FastChainBase tripleChain = converter.convert(chain);
+        FastChainBase tripleChain = ChainToTripleConverter.convert(chain);
         double value = 0;
         for (int i = 0; i < tripleChain.length(); i++) {
             String triple = tripleChain.get(i);

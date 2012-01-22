@@ -24,6 +24,7 @@ public class BinaryFastAverageGeometryInterval extends FastCalculatorBase {
 
     @Override
     public double getValue(FastChain chain, LinkUp linkUp) throws Exception {
+        //TODO: "Check calculating correct"
         FastAlphabet alphabet = chain.getAlphabet();
         FastUniformChain fastUniformChain1 =
                 chain.getFastUniformChain(alphabet.indexOf(sym1));
@@ -31,13 +32,8 @@ public class BinaryFastAverageGeometryInterval extends FastCalculatorBase {
                 chain.getFastUniformChain(alphabet.indexOf(sym2));
         FastUniformChain binaryChain =
                 FastChainAlgebra.composition(fastUniformChain1, fastUniformChain2);
-        FastCalculatorBase calculator = FastCalculatorFactory.getGeometryInterval();
+        FastCalculatorBase calculator = FastCalculatorFactory.getAverageGeometryInterval();
         return calculator.getValue(binaryChain, linkUp);
-    }
-
-    @Override
-    public double getValue(FastUniformChain chain, LinkUp linkUp) throws Exception {
-        return 0;  //TODO: "Заполнить метод"
     }
 
     @Override

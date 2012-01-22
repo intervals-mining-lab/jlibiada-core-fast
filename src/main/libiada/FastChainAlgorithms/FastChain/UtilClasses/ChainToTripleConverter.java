@@ -9,8 +9,8 @@ import libiada.FastChainAlgorithms.FastChain.FastChainBase;
  * Date: 04.08.11
  * Time: 19:13
  */
-public class ChainToTripleConverter {
-    public FastChainBase convert(FastChainBase ch) throws Exception {
+public abstract class ChainToTripleConverter {
+    public static FastChainBase convert(FastChainBase ch) throws Exception {
         FastChainBase result = new FastChain();
         String triple = "";
         for (int i = 0; i < ch.length(); i++) {
