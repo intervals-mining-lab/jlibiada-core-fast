@@ -1,6 +1,6 @@
 package libiada.TheoryOfSet;
 
-import libiada.Root.IBaseObject;
+import libiada.Root.SimpleTypes.Value;
 
 import java.util.ArrayList;
 
@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * Time: 1:49:09
  */
 public class Alphabet {
-    protected ArrayList vault = new ArrayList();
+    protected ArrayList<Value> vault = new ArrayList<Value>();
 
     public int getPower() {
         return vault.size();
     }
 
-    public int add(IBaseObject value) throws Exception {
+    public int add(Value value) throws Exception {
         if (vault.contains((value)))
         {
             throw new Exception("????????? ?????????? ??????? ? ???????");
@@ -26,21 +26,21 @@ public class Alphabet {
         {
             throw new Exception("??????? ???????? ??????? ?????? ? ???????");
         }
-        IBaseObject obj = value.Clone();
+        Value obj = (Value) value.clone();
         vault.add(obj);
         return vault.indexOf(obj);
     }
 
-    public boolean isContains(IBaseObject obj)
+    public boolean isContains(Value obj)
     {
         return vault.contains(obj);
     }
 
-    public int indexOf(IBaseObject value) {
+    public int indexOf(Value value) {
         int index = -1;
         for (int i = 0; i < vault.size(); i++)
         {
-            if (value.Equals(vault.get(i)))
+            if (value.equals(vault.get(i)))
                 index = i;
         }
         return index;
@@ -50,7 +50,7 @@ public class Alphabet {
         vault.remove(index);
     }
 
-    public IBaseObject get(int index) {
-        return (IBaseObject) vault.get(index);
+    public Value get(int index) {
+        return vault.get(index);
     }
 }

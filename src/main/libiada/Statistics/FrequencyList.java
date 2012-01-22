@@ -1,7 +1,6 @@
 package libiada.Statistics;
 
-import libiada.Root.IBaseObject;
-import libiada.Root.IBin;
+import libiada.Root.SimpleTypes.Value;
 import libiada.Root.SimpleTypes.ValueInt;
 import libiada.TheoryOfSet.Alphabet;
 
@@ -13,28 +12,26 @@ import java.util.ArrayList;
  * Date: 11.12.2010
  * Time: 1:47:53
  */
-public class FrequencyList extends Alphabet implements IBaseObject {
+public class FrequencyList extends Alphabet {
     private ArrayList<Long> pFrequency = new ArrayList<Long>();
 
     @Override
-    public IBaseObject get(int index)
+    public Value get(int index)
     {
-        return new DictionaryEntryBase(((IBaseObject) vault.get(index)).Clone(), new ValueInt(pFrequency.get(index)));
+        return new DictionaryEntryBase(new ValueInt(pFrequency.get(index)), vault.get(index));
     }
 
-    public IBaseObject Clone() {
+    @Override
+    public Object clone() {
         FrequencyList frecList = new FrequencyList();
         frecList.pFrequency = (ArrayList<Long>) this.pFrequency.clone();
         frecList.vault = (ArrayList) this.vault.clone();
-        return frecList;  //TODO: "????????? ?????"
+        return frecList;
     }
 
-    public boolean Equals(Object obj) {
-        return false;  //TODO: "????????? ?????"
-    }
-
-    public IBin GetBin() {
-        return null;  //TODO: "????????? ?????"
+    @Override
+    public boolean equals(Object obj) {
+        return false;  //TODO: "Fill method"
     }
 
     public int getCount() {
@@ -46,7 +43,7 @@ public class FrequencyList extends Alphabet implements IBaseObject {
         return temp;
     }
 
-    public int add(IBaseObject o) throws Exception {
+    public int add(Value o) throws Exception {
         int result = indexOf(o);
 
         if (result == -1)
@@ -61,7 +58,7 @@ public class FrequencyList extends Alphabet implements IBaseObject {
     public void sum(FrequencyList intervals) throws Exception {
         for (int i = 0; i < intervals.getPower(); i++)
         {
-            IBaseObject value = ((DictionaryEntryBase)intervals.get(i)).getKey();
+            Value value = ((DictionaryEntryBase)intervals.get(i)).getKey();
             long valueCount = ((ValueInt) ((DictionaryEntryBase)intervals.get(i)).getValue()).getValue();
             if (!isContains(value))
             {
