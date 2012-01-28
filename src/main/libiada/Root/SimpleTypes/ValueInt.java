@@ -1,12 +1,15 @@
 package libiada.Root.SimpleTypes;
 
+import main.Root.IBaseObject;
+import main.Root.IBin;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Alex
  * Date: 30.11.2010
  * Time: 10:11:33
  */
-public class ValueInt extends Value {
+public class ValueInt implements IBaseObject {
     private long value;
 
     public ValueInt(long i) {
@@ -28,6 +31,10 @@ public class ValueInt extends Value {
         if (this.getClass() != obj.getClass())
             return false;
         return value == ((ValueInt)obj).getValue();
+    }
+
+    public IBin GetBin() {
+        return null;  //TODO:"Заполни метод!"
     }
 
     public long getValue() {

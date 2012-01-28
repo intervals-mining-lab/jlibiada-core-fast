@@ -21,6 +21,12 @@
         <pathelement location="${build.main}"/>
     </path>
 
+    <path id="compile.classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
     <path id="test.classpath">
         <path refid="test.compile.classpath"/>
         <pathelement location="${build.test}"/>
@@ -38,7 +44,9 @@
         <javac srcdir="${source.main}"
                destdir="${build.main}"
                includeantruntime="false"
-               debug="true"/>
+               debug="true">
+            <classpath refid="compile.classpath"/>
+        </javac>
     </target>
 
     <target name="archive" depends="compile">

@@ -1,6 +1,7 @@
 package libiada.Statistics;
 
-import libiada.Root.SimpleTypes.Value;
+import main.Root.IBaseObject;
+import main.Root.IBin;
 
 /**
  * Created by IntelliJ IDEA.
@@ -8,42 +9,44 @@ import libiada.Root.SimpleTypes.Value;
  * Date: 25.01.2011
  * Time: 20:25:02
  */
-public class DictionaryEntryBase extends Value{
-    private Value key;
-    private Value value;
+public class DictionaryEntryBase implements IBaseObject {
+    private IBaseObject key;
+    private IBaseObject value;
 
-    public DictionaryEntryBase(Value pkey, Value pvalue) {
+    public DictionaryEntryBase(IBaseObject pkey, IBaseObject pvalue) {
         key = pkey;
         value = pvalue;
     }
 
-    public Value getKey()
+    public IBaseObject getKey()
     {
         return key;
     }
 
-    public Value getValue()
+    public IBaseObject getValue()
     {
         return value;
     }
 
-    public void setKey(Value key)
+    public void setKey(IBaseObject key)
     {
         this.key = key;
     }
 
-    public void setValue(Value value)
+    public void setValue(IBaseObject value)
     {
         this.value = value;
     }
 
-    @Override
-    public Object clone() {
+    public IBaseObject clone() {
         return null;  //TODO:"Заполни метод!"
     }
 
-    @Override
     public boolean equals(Object obj) {
         return false;  //TODO:"Заполни метод!"
+    }
+
+    public IBin GetBin() {
+        return null;  //TODO:"Заполни метод!"
     }
 }
