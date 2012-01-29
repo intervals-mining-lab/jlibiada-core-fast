@@ -10,3 +10,6 @@ build/*
 reports
 reports/*
 cobertura.ser
+ivy/ivy.jar
+lib
+lib/*

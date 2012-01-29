@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jlibiada-core-fast" default="jar-make">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="jlibiada-core-fast" default="ftp-publish">
+
+    <property name="ivy.install.version" value="2.2.0"/>
+    <property name="ivy.jar.dir" value="${basedir}/ivy"/>
+    <property name="ivy.lib.dir" value="lib"/>
+    <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar"/>
+    <property name="jsch.jar.name" value="jsch-0.1.45.jar"/>
+
     <property name="source" value="src"/>
     <property name="source.main" value="${source}/main"/>
     <property name="source.test" value="${source}/test"/>
@@ -13,18 +20,17 @@
 
     <property name="dist" value="dist"/>
 
+    <path id="compile.classpath">
+        <fileset dir="${ivy.lib.dir}/compile">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
 
     <path id="test.compile.classpath">
-        <fileset dir="lib">
+        <fileset dir="${ivy.lib.dir}/test">
             <include name="*.jar"/>
         </fileset>
         <pathelement location="${build.main}"/>
-    </path>
-
-    <path id="compile.classpath">
-        <fileset dir="lib">
-            <include name="*.jar"/>
-        </fileset>
     </path>
 
     <path id="test.classpath">
@@ -36,11 +42,12 @@
         <mkdir dir="${dist}"/>
         <mkdir dir="${build.main}"/>
         <mkdir dir="${build.test}"/>
+        <mkdir dir="lib"/>
 
         <mkdir dir="${reports.test.xml}"/>
     </target>
 
-    <target name="compile" depends="init">
+    <target name="compile" depends="init, install-ivy, download-ivy, ivy-retrieve">
         <javac srcdir="${source.main}"
                destdir="${build.main}"
                includeantruntime="false"
@@ -53,7 +60,7 @@
         <jar basedir="${build.main}" destfile="${dist}/jlibiada-core-fast.jar"/>
     </target>
 
-    <target name="clean">
+    <target name="clean" depends="clean-cache, clean-ivy">
         <delete dir="${dist}"/>
         <delete dir="${build}"/>
         <delete dir="${reports}"/>
@@ -78,8 +85,50 @@
             </batchtest>
         </junit>
     </target>
-    
+
     <target name="jar-make" depends="test-basic">
-	<jar destfile="dist/core-fast.jar" basedir="${build.main}"/>
+	    <jar destfile="${dist}/jlibiada-core-fast.jar" basedir="${build.main}"/>
+    </target>
+
+    <target name="download-ivy" unless="skip.download">
+        <mkdir dir="${ivy.jar.dir}"/>
+        <!--
+        download Ivy from web site so that it can be used even without any special installation
+        -->
+        <echo message="installing ivy..."/>
+        <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar.file}" usetimestamp="true"/>
+    </target>
+
+    <target name="install-ivy" depends="download-ivy" description="--> install ivy">
+        <path id="ivy.lib.path">
+            <fileset dir="${ivy.jar.dir}" includes="*.jar"/>
+        </path>
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="${ivy.jar.file};${ivy.jar.dir}/${jsch.jar.name}"/>
+    </target>
+
+    <target name="clean-ivy" description="--> clean the ivy installation">
+        <!--<delete dir="${ivy.jar.dir}"/>-->
+    </target>
+    <!--
+    ================================= target: clean-cache =================================
+    -->
+    <target name="clean-cache" depends="install-ivy" description="--> clean the ivy cache">
+        <ivy:cleancache/>
+    </target>
+
+    <target name="ivy-resolve">
+        <!--<ivy:configure file="${basedir}/ivyconf.xml"/>-->
+        <ivy:resolve />
+    </target>
+
+    <target name="ivy-retrieve" depends="ivy-resolve">
+        <ivy:retrieve pattern="${ivy.lib.dir}/[conf]/[artifact]-[revision].[ext]" sync="true"/>
+    </target>
+
+    <target name="ftp-publish" depends="jar-make">
+        <ivy:publish resolver="ssh-serv"
+                     pubrevision="1.0"
+                     overwrite="true"
+                     artifactspattern="${dist}/[artifact].[ext]"/>
     </target>
 </project>
