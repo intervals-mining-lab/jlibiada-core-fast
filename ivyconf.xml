@@ -1,0 +1,18 @@
+<ivysettings>
+    <property name="ibiblio-maven2-root" value="http://repo1.maven.org/maven2/" override="false" />
+    <property name="maven2.pattern" value="[organisation]/[module]/[revision]/[artifact]-[revision]" />
+    <property name="maven2.pattern.ext" value="${maven2.pattern}.[ext]" />
+    <include url="${ivy.default.conf.dir}/ivyconf-local.xml"/>
+    <conf defaultResolver="maven2"/>
+    <resolvers>
+        <ibiblio name="maven2" root="${ibiblio-maven2-root}" pattern="${maven2.pattern.ext}" m2compatible="true" />
+        <ssh name="ssh-serv" host="apertalab.no-ip.org" user="goruha" userPassword="q1w2e3r4t5">
+            <ivy pattern="/home/ftp/reps/[module]/develop/[revision]/ivy.xml"/>
+            <artifact pattern="/home/ftp/reps/[module]/develop/[revision]/[artifact].[ext]"/>
+        </ssh>
+    </resolvers>
+    <modules>
+        <module organisation="ivt" name="*" resolver="ssh-serv"/>
+        <module organisation="junit" name="*" resolver="maven2"/>
+    </modules>
+</ivysettings>

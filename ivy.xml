@@ -1,0 +1,17 @@
+<ivy-module version="1.0">
+    <info organisation="ivt" module="jlibiada-core-fast"/>
+    <configurations defaultconfmapping="default">
+        <conf name="compile" visibility="private"/>
+        <conf name="test" extends="compile" visibility="private"/>
+        <conf name="master" />
+        <conf name="runtime" extends="compile"/>
+        <conf name="default" extends="master,runtime"/>
+    </configurations>
+    <publications>
+        <artifact name="jlibiada-core-fast" conf="master" type="jar" />
+    </publications>
+    <dependencies>
+        <dependency org="junit" name="junit" rev="3.8.2" conf="test->default"/>
+        <dependency org="ivt" name="core-misc" rev="1.0" conf="test->default;compile->default"/>
+    </dependencies>
+</ivy-module>
