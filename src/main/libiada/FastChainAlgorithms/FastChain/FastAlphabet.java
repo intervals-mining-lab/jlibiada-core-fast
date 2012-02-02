@@ -1,4 +1,4 @@
-package libiada.FastChainAlgorithms.FastChain;
+package main.libiada.FastChainAlgorithms.FastChain;
 
 import java.util.ArrayList;
 

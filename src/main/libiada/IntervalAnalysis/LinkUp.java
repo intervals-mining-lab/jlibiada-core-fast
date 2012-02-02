@@ -1,4 +1,4 @@
-package libiada.IntervalAnalysis;
+package main.libiada.IntervalAnalysis;
 
 /**
  * Created by IntelliJ IDEA.

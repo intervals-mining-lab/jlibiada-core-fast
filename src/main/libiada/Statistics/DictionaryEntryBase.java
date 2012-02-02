@@ -1,4 +1,4 @@
-package libiada.Statistics;
+package main.libiada.Statistics;
 
 import main.Root.IBaseObject;
 import main.Root.IBin;

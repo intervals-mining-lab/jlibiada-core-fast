@@ -1,7 +1,7 @@
 package test.FastChainAlgoritms.FastChain.Calculators;
 
 import junit.framework.TestCase;
-import libiada.FastChainAlgorithms.FastChain.Calculators.*;
+import main.libiada.FastChainAlgorithms.FastChain.Calculators.*;
 
 import java.util.HashSet;
 

@@ -1,4 +1,4 @@
-package libiada.FastChainAlgorithms.FastChain.UtilClasses;
+package main.libiada.FastChainAlgorithms.FastChain.UtilClasses;
 
 import java.util.HashMap;
 import java.util.Map;

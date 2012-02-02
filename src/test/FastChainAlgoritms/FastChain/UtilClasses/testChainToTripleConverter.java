@@ -1,9 +1,9 @@
 package test.FastChainAlgoritms.FastChain.UtilClasses;
 
 import junit.framework.TestCase;
-import libiada.FastChainAlgorithms.FastChain.FastChain;
-import libiada.FastChainAlgorithms.FastChain.FastChainBase;
-import libiada.FastChainAlgorithms.FastChain.UtilClasses.ChainToTripleConverter;
+import main.libiada.FastChainAlgorithms.FastChain.FastChain;
+import main.libiada.FastChainAlgorithms.FastChain.FastChainBase;
+import main.libiada.FastChainAlgorithms.FastChain.UtilClasses.ChainToTripleConverter;
 
 /**
  * Created by IntelliJ IDEA.

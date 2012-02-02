@@ -1,9 +1,9 @@
-package libiada.FastChainAlgorithms.FastChain.Calculators;
+package main.libiada.FastChainAlgorithms.FastChain.Calculators;
 
-import libiada.FastChainAlgorithms.FastChain.FastChain;
-import libiada.FastChainAlgorithms.FastChain.FastIntervalsChain;
-import libiada.FastChainAlgorithms.FastChain.FastUniformChain;
-import libiada.IntervalAnalysis.LinkUp;
+import main.libiada.FastChainAlgorithms.FastChain.FastChain;
+import main.libiada.FastChainAlgorithms.FastChain.FastIntervalsChain;
+import main.libiada.FastChainAlgorithms.FastChain.FastUniformChain;
+import main.libiada.IntervalAnalysis.LinkUp;
 
 /**
  * Created by IntelliJ IDEA.

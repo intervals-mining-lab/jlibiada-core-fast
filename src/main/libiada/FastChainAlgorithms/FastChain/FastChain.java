@@ -1,6 +1,6 @@
-package libiada.FastChainAlgorithms.FastChain;
+package main.libiada.FastChainAlgorithms.FastChain;
 
-import libiada.FastChainAlgorithms.FastChain.UtilClasses.IntervalsAlgebra;
+import main.libiada.FastChainAlgorithms.FastChain.UtilClasses.IntervalsAlgebra;
 
 import java.util.HashMap;
 

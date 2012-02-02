@@ -1,7 +1,7 @@
-package libiada.FastChainAlgorithms.FastChain.UtilClasses;
+package main.libiada.FastChainAlgorithms.FastChain.UtilClasses;
 
-import libiada.FastChainAlgorithms.FastChain.FastChain;
-import libiada.FastChainAlgorithms.FastChain.FastChainBase;
+import main.libiada.FastChainAlgorithms.FastChain.FastChain;
+import main.libiada.FastChainAlgorithms.FastChain.FastChainBase;
 
 /**
  * Created by IntelliJ IDEA.

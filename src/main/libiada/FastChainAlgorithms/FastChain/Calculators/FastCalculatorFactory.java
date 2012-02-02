@@ -1,4 +1,4 @@
-package libiada.FastChainAlgorithms.FastChain.Calculators;
+package main.libiada.FastChainAlgorithms.FastChain.Calculators;
 
 import java.util.HashSet;
 

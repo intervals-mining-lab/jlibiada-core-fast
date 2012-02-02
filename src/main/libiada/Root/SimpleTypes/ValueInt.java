@@ -1,4 +1,4 @@
-package libiada.Root.SimpleTypes;
+package main.libiada.Root.SimpleTypes;
 
 import main.Root.IBaseObject;
 import main.Root.IBin;

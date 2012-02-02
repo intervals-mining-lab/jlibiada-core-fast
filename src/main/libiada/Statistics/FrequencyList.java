@@ -1,6 +1,6 @@
-package libiada.Statistics;
+package main.libiada.Statistics;
 
-import libiada.Root.SimpleTypes.ValueInt;
+import main.libiada.Root.SimpleTypes.ValueInt;
 import main.Root.IBaseObject;
 import main.TheoryOfSet.Alphabet;
 
