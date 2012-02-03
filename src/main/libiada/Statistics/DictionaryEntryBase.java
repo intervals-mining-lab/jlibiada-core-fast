@@ -1,7 +1,6 @@
 package main.libiada.Statistics;
 
-import main.Root.IBaseObject;
-import main.Root.IBin;
+import main.Root.BaseObject;
 
 /**
  * Created by IntelliJ IDEA.
@@ -9,36 +8,36 @@ import main.Root.IBin;
  * Date: 25.01.2011
  * Time: 20:25:02
  */
-public class DictionaryEntryBase implements IBaseObject {
-    private IBaseObject key;
-    private IBaseObject value;
+public class DictionaryEntryBase extends BaseObject {
+    private BaseObject key;
+    private BaseObject value;
 
-    public DictionaryEntryBase(IBaseObject pkey, IBaseObject pvalue) {
+    public DictionaryEntryBase(BaseObject pkey, BaseObject pvalue) {
         key = pkey;
         value = pvalue;
     }
 
-    public IBaseObject getKey()
+    public BaseObject getKey()
     {
         return key;
     }
 
-    public IBaseObject getValue()
+    public BaseObject getValue()
     {
         return value;
     }
 
-    public void setKey(IBaseObject key)
+    public void setKey(BaseObject key)
     {
         this.key = key;
     }
 
-    public void setValue(IBaseObject value)
+    public void setValue(BaseObject value)
     {
         this.value = value;
     }
 
-    public IBaseObject clone() {
+    public BaseObject clone() {
         return null;  //TODO:"Заполни метод!"
     }
 
@@ -46,7 +45,13 @@ public class DictionaryEntryBase implements IBaseObject {
         return false;  //TODO:"Заполни метод!"
     }
 
-    public IBin GetBin() {
+    @Override
+    public String toString() {
         return null;  //TODO:"Заполни метод!"
+    }
+
+    @Override
+    public int compareTo(BaseObject object) {
+        return 0;  //TODO:"Заполни метод!"
     }
 }

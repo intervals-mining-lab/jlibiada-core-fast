@@ -15,7 +15,7 @@
         <module name="EmptyStatement"/>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
-        <module name="MagicNumber"/>
+        <!--<module name="MagicNumber"/>-->
         <module name="MissingSwitchDefault"/>
         <module name="IllegalImport"/>
         <module name="RedundantImport"/>

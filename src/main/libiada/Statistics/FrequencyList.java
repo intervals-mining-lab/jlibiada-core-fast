@@ -1,7 +1,7 @@
 package main.libiada.Statistics;
 
-import main.libiada.Root.SimpleTypes.ValueInt;
-import main.Root.IBaseObject;
+import main.Root.BaseObject;
+import main.Root.SimpleTypes.ValueInt;
 import main.TheoryOfSet.Alphabet;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class FrequencyList extends Alphabet {
     private ArrayList<Long> pFrequency = new ArrayList<Long>();
 
     @Override
-    public IBaseObject get(int index)
+    public BaseObject get(int index)
     {
         return new DictionaryEntryBase(new ValueInt(pFrequency.get(index)), vault.get(index));
     }
@@ -43,7 +43,7 @@ public class FrequencyList extends Alphabet {
         return temp;
     }
 
-    public int add(IBaseObject o) throws Exception {
+    public int add(BaseObject o) throws Exception {
         int result = indexOf(o);
 
         if (result == -1)
@@ -58,7 +58,7 @@ public class FrequencyList extends Alphabet {
     public void sum(FrequencyList intervals) throws Exception {
         for (int i = 0; i < intervals.getPower(); i++)
         {
-            IBaseObject value = ((DictionaryEntryBase)intervals.get(i)).getKey();
+            BaseObject value = ((DictionaryEntryBase)intervals.get(i)).getKey();
             long valueCount = ((ValueInt) ((DictionaryEntryBase)intervals.get(i)).getValue()).getValue();
             if (!isContains(value))
             {
