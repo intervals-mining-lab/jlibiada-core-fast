@@ -1,9 +1,9 @@
 package test.FastChainAlgoritms.FastChain;
 
 import junit.framework.TestCase;
-import main.libiada.FastChainAlgorithms.FastChain.FastAlphabet;
-import main.libiada.FastChainAlgorithms.FastChain.FastChain;
-import main.libiada.FastChainAlgorithms.FastChain.FastChainBase;
+import FastChainAlgorithms.FastChain.FastAlphabet;
+import FastChainAlgorithms.FastChain.FastChain;
+import FastChainAlgorithms.FastChain.FastChainBase;
 
 import java.util.ArrayList;
 

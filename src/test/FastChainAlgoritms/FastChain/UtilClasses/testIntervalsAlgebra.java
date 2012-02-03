@@ -1,7 +1,7 @@
 package test.FastChainAlgoritms.FastChain.UtilClasses;
 
 import junit.framework.TestCase;
-import main.libiada.FastChainAlgorithms.FastChain.UtilClasses.IntervalsAlgebra;
+import FastChainAlgorithms.FastChain.UtilClasses.IntervalsAlgebra;
 
 import java.util.HashMap;
 

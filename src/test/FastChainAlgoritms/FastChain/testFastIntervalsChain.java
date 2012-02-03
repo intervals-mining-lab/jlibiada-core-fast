@@ -1,8 +1,8 @@
 package test.FastChainAlgoritms.FastChain;
 
 import junit.framework.TestCase;
-import main.libiada.FastChainAlgorithms.FastChain.FastChain;
-import main.libiada.FastChainAlgorithms.FastChain.FastIntervalsChain;
+import FastChainAlgorithms.FastChain.FastChain;
+import FastChainAlgorithms.FastChain.FastIntervalsChain;
 
 import java.util.HashMap;
 

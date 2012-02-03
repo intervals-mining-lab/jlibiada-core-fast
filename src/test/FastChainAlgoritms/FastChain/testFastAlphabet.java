@@ -1,7 +1,7 @@
 package test.FastChainAlgoritms.FastChain;
 
 import junit.framework.TestCase;
-import main.libiada.FastChainAlgorithms.FastChain.FastAlphabet;
+import FastChainAlgorithms.FastChain.FastAlphabet;
 
 /**
  * Created by IntelliJ IDEA.

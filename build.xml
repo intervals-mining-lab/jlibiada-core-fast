@@ -79,7 +79,7 @@
         <junit printsummary="false" haltonfailure="false">
             <classpath refid="test.classpath"/>
             <formatter type="xml"/>
-            <!--<test todir="${reports.test.xml}" name="test.FastChainAlgoritms.FastChain.Calculators.testMuCalculator"/>-->
+            <!--<test todir="${reports.test.xml}" name="test.FastChainAlgoritms.FastChainAlgorithms.FastChain.Calculators.testMuCalculator"/>-->
             <batchtest todir="${reports.test.xml}">
                 <fileset dir="${build.test}" includes="**/*.class"/>
             </batchtest>

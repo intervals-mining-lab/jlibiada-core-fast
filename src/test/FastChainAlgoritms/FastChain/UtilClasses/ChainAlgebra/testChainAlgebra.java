@@ -1,9 +1,9 @@
 package test.FastChainAlgoritms.FastChain.UtilClasses.ChainAlgebra;
 
 import junit.framework.TestCase;
-import main.libiada.FastChainAlgorithms.FastChain.FastChain;
-import main.libiada.FastChainAlgorithms.FastChain.FastUniformChain;
-import main.libiada.FastChainAlgorithms.FastChain.UtilClasses.ChainAlgebra.FastChainAlgebra;
+import FastChainAlgorithms.FastChain.FastChain;
+import FastChainAlgorithms.FastChain.FastUniformChain;
+import FastChainAlgorithms.FastChain.UtilClasses.ChainAlgebra.FastChainAlgebra;
 
 /**
  * Created by IntelliJ IDEA.

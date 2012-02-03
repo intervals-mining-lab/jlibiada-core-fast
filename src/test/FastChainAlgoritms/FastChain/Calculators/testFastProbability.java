@@ -1,10 +1,10 @@
 package test.FastChainAlgoritms.FastChain.Calculators;
 
 import junit.framework.TestCase;
-import main.libiada.FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
-import main.libiada.FastChainAlgorithms.FastChain.FastChain;
-import main.libiada.FastChainAlgorithms.FastChain.FastUniformChain;
-import main.libiada.IntervalAnalysis.LinkUp;
+import FastChainAlgorithms.FastChain.Calculators.FastCalculatorFactory;
+import FastChainAlgorithms.FastChain.FastChain;
+import FastChainAlgorithms.FastChain.FastUniformChain;
+import IntervalAnalysis.LinkUp;
 
 /**
  * Created by IntelliJ IDEA.
