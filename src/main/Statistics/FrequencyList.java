@@ -1,8 +1,8 @@
 package Statistics;
 
-import main.Root.BaseObject;
-import main.Root.SimpleTypes.ValueInt;
-import main.TheoryOfSet.Alphabet;
+import Root.BaseObject;
+import Root.SimpleTypes.ValueInt;
+import TheoryOfSet.Alphabet;
 
 import java.util.ArrayList;
 
